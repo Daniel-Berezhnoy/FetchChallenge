@@ -1,5 +1,5 @@
 //
-//  MenuItemCell.swift
+//  MealView.swift
 //  FetchChallenge
 //
 //  Created by Daniel Berezhnoy on 6/28/24.
@@ -7,24 +7,23 @@
 
 import SwiftUI
 
-struct MenuItemCell: View {
-    
-    let menuItem: MenuItem
+struct MealView: View {
+    let meal: Meal
     
     var body: some View {
         HStack {
             VStack {
-                Text(menuItem.strMeal)
+                Text(meal.strMeal)
                     .font(.title2)
                     .fontWeight(.semibold)
                 
-                Text(menuItem.idMeal)
+                Text(meal.idMeal)
                     .foregroundStyle(.secondary)
             }
             
             Spacer()
             
-            AsyncImage(url: URL(string: menuItem.strMealThumb)) { image in
+            AsyncImage(url: URL(string: meal.strMealThumb)) { image in
                 image.image?
                     .resizable()
                     .scaledToFit()
@@ -35,11 +34,11 @@ struct MenuItemCell: View {
         .padding()
     }
     
-    init(for menuItem: MenuItem) {
-        self.menuItem = menuItem
+    init(for meal: Meal) {
+        self.meal = meal
     }
 }
 
 #Preview {
-    MenuItemCell(for: MenuItem.sampleItem)
+    MealView(for: Meal.sampleItem)
 }

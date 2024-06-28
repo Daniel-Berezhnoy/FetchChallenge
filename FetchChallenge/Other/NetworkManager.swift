@@ -13,7 +13,7 @@ final class NetworkManager {
     static let baseURL = "https://themealdb.com/api/json/v1/1/filter.php?c="
     private let dessertURL = baseURL + "Dessert"
     
-    func getMenuItems() async throws -> [MenuItem] {
+    func getMenuItems() async throws -> [Meal] {
         
         guard let checkedURL = URL(string: dessertURL) else {
             throw FCError.invalidURL
