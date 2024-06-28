@@ -13,6 +13,10 @@ struct MenuItem: Hashable, Codable {
     let strMealThumb: String // imageURL
 }
 
+struct MenuResponse: Codable {
+    let meals: [MenuItem]
+}
+
 extension MenuItem {
     static let sampleItem = MenuItem(idMeal: "1234", strMeal: "Title", strMealThumb: "https://picsum.photos/200")
 }

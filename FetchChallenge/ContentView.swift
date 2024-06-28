@@ -15,11 +15,12 @@ struct ContentView: View {
             MenuItemCell(for: menuItem)
         }
         .listStyle(.plain)
-        .onAppear { getData() }
+        .onAppear { getMenu() }
+        .refreshable { getMenu() }
     }
     
-    private func getData() {
-        items.append(MenuItem.sampleItem)
+    func getMenu() {
+        Task { items = try await NetworkManager.shared.getMenuItems() }
     }
 }
 
