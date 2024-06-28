@@ -13,17 +13,17 @@ struct MealView: View {
     var body: some View {
         HStack {
             VStack {
-                Text(meal.strMeal)
+                Text(meal.title)
                     .font(.title2)
                     .fontWeight(.semibold)
                 
-                Text(meal.idMeal)
+                Text(meal.id)
                     .foregroundStyle(.secondary)
             }
             
             Spacer()
             
-            AsyncImage(url: URL(string: meal.strMealThumb)) { image in
+            AsyncImage(url: URL(string: meal.imageURL)) { image in
                 image.image?
                     .resizable()
                     .scaledToFit()

@@ -8,9 +8,15 @@
 import Foundation
 
 struct Meal: Hashable, Codable {
-    let idMeal: String // id
-    let strMeal: String // title
-    let strMealThumb: String // imageURL
+    let id: String
+    let title: String
+    let imageURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "idMeal"
+        case title = "strMeal"
+        case imageURL = "strMealThumb"
+    }
 }
 
 struct MenuResponse: Codable {
@@ -18,5 +24,5 @@ struct MenuResponse: Codable {
 }
 
 extension Meal {
-    static let sampleItem = Meal(idMeal: "1234", strMeal: "Title", strMealThumb: "https://picsum.photos/200")
+    static let sampleItem = Meal(id: "1234", title: "Title", imageURL: "https://picsum.photos/200")
 }
