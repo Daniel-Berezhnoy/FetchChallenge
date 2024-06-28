@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var items: [MenuItem] = []
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(items, id: \.self) { menuItem in
+            MenuItemCell(for: menuItem)
         }
-        .padding()
+        .listStyle(.plain)
+        .onAppear { getData() }
+    }
+    
+    private func getData() {
+        items.append(MenuItem.sampleItem)
     }
 }
 
