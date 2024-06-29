@@ -11,7 +11,11 @@ struct MealDetailView: View {
     let meal: Meal
     
     var body: some View {
-        Text("Hello, World!")
+        ScrollView {
+//            Text("Hello, World!")
+        }
+        .navigationTitle(meal.title)
+//        .toolbarTitleDisplayMode(.inline)
     }
     
     init(for meal: Meal) {
