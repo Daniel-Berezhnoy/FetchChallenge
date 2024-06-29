@@ -14,7 +14,7 @@ struct MealDetailView: View {
         ScrollView {
 //            Text("Hello, World!")
         }
-        .navigationTitle(meal.title)
+        .navigationTitle(meal.title.capitalized)
 //        .toolbarTitleDisplayMode(.inline)
     }
     

@@ -39,7 +39,7 @@ struct MealCellView: View {
     }
     
     private var title: some View {
-        Text(meal.title)
+        Text(meal.title.capitalized)
             .font(.title3)
             .fontWeight(.semibold)
         
