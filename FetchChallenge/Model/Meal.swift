@@ -24,5 +24,5 @@ struct MenuResponse: Codable {
 }
 
 extension Meal {
-    static let sampleItem = Meal(id: "1234", title: "Title", imageURL: "https://picsum.photos/200")
+    static let sampleItem = Meal(id: "1234", title: "Title", imageURL: "https://picsum.photos/2000")
 }

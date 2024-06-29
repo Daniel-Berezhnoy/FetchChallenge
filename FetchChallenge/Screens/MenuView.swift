@@ -14,7 +14,7 @@ struct MenuView: View {
         List(meals, id: \.self) { meal in
             MealView(for: meal)
         }
-        .listStyle(.plain)
+//        .listStyle(.plain)
         .onAppear { loadMenu() }
         .refreshable { loadMenu() }
     }

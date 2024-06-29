@@ -6,32 +6,46 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct MealView: View {
     let meal: Meal
     
     var body: some View {
         HStack {
-            VStack {
-                Text(meal.title)
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                
-                Text(meal.id)
-                    .foregroundStyle(.secondary)
-            }
+            image
             
-            Spacer()
-            
-            AsyncImage(url: URL(string: meal.imageURL)) { image in
-                image.image?
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 75, height: 75)
-                    .cornerRadius(15)
+            VStack(alignment: .leading, spacing: 8) {
+                title
+                id
             }
+            .padding(.leading)
         }
-        .padding()
+        .padding(.vertical, 5)
+    }
+    
+    private var id: some View {
+        Text(meal.id)
+            .foregroundColor(.secondary)
+    }
+    
+    private var image: some View {
+        CachedAsyncImage(url: URL(string: meal.imageURL)) { image in
+            image.resizable()
+        } placeholder: {
+            Image(.mealPlaceholder)
+                .resizable()
+                .scaleEffect(1.3)
+        }
+        .scaledToFill()
+        .frame(width: 120, height: 90)
+        .cornerRadius(8)
+    }
+    
+    private var title: some View {
+        Text(meal.title)
+            .font(.title3)
+            .fontWeight(.semibold)
     }
     
     init(for meal: Meal) {

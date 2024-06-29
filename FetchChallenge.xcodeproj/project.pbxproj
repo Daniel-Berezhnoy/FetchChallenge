@@ -15,6 +15,7 @@
 		B92C98E42C2F71F60064C19B /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98E32C2F71F60064C19B /* MealView.swift */; };
 		B92C98E62C2F78200064C19B /* FCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98E52C2F78200064C19B /* FCError.swift */; };
 		B92C98E82C2F79470064C19B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98E72C2F79470064C19B /* NetworkManager.swift */; };
+		B92C98EF2C2F86600064C19B /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = B92C98EE2C2F86600064C19B /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B92C98EF2C2F86600064C19B /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +63,7 @@
 			children = (
 				B92C98D32C2F70470064C19B /* FetchChallengeApp.swift */,
 				B92C98E92C2F7A4B0064C19B /* Model */,
+				B92C98EC2C2F83F10064C19B /* Screens */,
 				B92C98EA2C2F7A510064C19B /* Views */,
 				B92C98EB2C2F7A7E0064C19B /* Other */,
 				B92C98D72C2F70470064C19B /* Assets.xcassets */,
@@ -88,7 +91,6 @@
 		B92C98EA2C2F7A510064C19B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B92C98D52C2F70470064C19B /* MenuView.swift */,
 				B92C98E32C2F71F60064C19B /* MealView.swift */,
 			);
 			path = Views;
@@ -101,6 +103,14 @@
 				B92C98E52C2F78200064C19B /* FCError.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		B92C98EC2C2F83F10064C19B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B92C98D52C2F70470064C19B /* MenuView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +129,9 @@
 			dependencies = (
 			);
 			name = FetchChallenge;
+			packageProductDependencies = (
+				B92C98EE2C2F86600064C19B /* CachedAsyncImage */,
+			);
 			productName = FetchChallenge;
 			productReference = B92C98D02C2F70470064C19B /* FetchChallenge.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +160,9 @@
 				Base,
 			);
 			mainGroup = B92C98C72C2F70470064C19B;
+			packageReferences = (
+				B92C98ED2C2F86600064C19B /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = B92C98D12C2F70470064C19B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -384,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B92C98ED2C2F86600064C19B /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B92C98EE2C2F86600064C19B /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B92C98ED2C2F86600064C19B /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B92C98C82C2F70470064C19B /* Project object */;
 }
