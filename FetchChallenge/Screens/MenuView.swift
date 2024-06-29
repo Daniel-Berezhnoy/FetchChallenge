@@ -11,12 +11,20 @@ struct MenuView: View {
     @State private var meals: [Meal] = []
     
     var body: some View {
-        List(meals, id: \.self) { meal in
-            MealView(for: meal)
+        NavigationStack {
+            List(meals, id: \.self) { meal in
+    
+                NavigationLink {
+                    MealDetailView(for: meal)
+                } label: {
+                    MealCellView(for: meal)
+                }
+            }
+            .navigationTitle("Menu")
+            
+            .onAppear { loadMenu() }
+            .refreshable { loadMenu() }
         }
-//        .listStyle(.plain)
-        .onAppear { loadMenu() }
-        .refreshable { loadMenu() }
     }
     
     func loadMenu() {

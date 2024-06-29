@@ -16,6 +16,7 @@
 		B92C98E62C2F78200064C19B /* FCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98E52C2F78200064C19B /* FCError.swift */; };
 		B92C98E82C2F79470064C19B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98E72C2F79470064C19B /* NetworkManager.swift */; };
 		B92C98EF2C2F86600064C19B /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = B92C98EE2C2F86600064C19B /* CachedAsyncImage */; };
+		B92C98F12C2F921D0064C19B /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98F02C2F921D0064C19B /* MealDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B92C98E32C2F71F60064C19B /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		B92C98E52C2F78200064C19B /* FCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCError.swift; sourceTree = "<group>"; };
 		B92C98E72C2F79470064C19B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B92C98F02C2F921D0064C19B /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				B92C98D52C2F70470064C19B /* MenuView.swift */,
+				B92C98F02C2F921D0064C19B /* MealDetailView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				B92C98E22C2F70D10064C19B /* Meal.swift in Sources */,
 				B92C98E42C2F71F60064C19B /* MealView.swift in Sources */,
 				B92C98D62C2F70470064C19B /* MenuView.swift in Sources */,
+				B92C98F12C2F921D0064C19B /* MealDetailView.swift in Sources */,
 				B92C98D42C2F70470064C19B /* FetchChallengeApp.swift in Sources */,
 				B92C98E62C2F78200064C19B /* FCError.swift in Sources */,
 			);
