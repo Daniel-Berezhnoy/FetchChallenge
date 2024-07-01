@@ -24,20 +24,35 @@ struct MealDetailView: View {
         .background { backgroundImage }
     }
     
-    #warning("Blur the edges")
     private var image: some View {
-        AsyncImage(url: URL(string: meal.imageURL)) { image in
-            image
-                .resizable()
-                .scaledToFit()
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.black)
             
-        } placeholder: {
-            Image(systemName: "carrot")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.secondary)
-                .padding(90)
+            AsyncImage(url: URL(string: meal.imageURL)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .offset(y: -5)
+                
+            } placeholder: {
+                Image(systemName: "carrot")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.secondary)
+                    .padding(90)
+            }
+            
+            
         }
+        .mask(LinearGradient(gradient: Gradient(stops: [
+            .init(color: .black, location: 0),
+            .init(color: .clear, location: 1),
+            
+                .init(color: .clear, location: 1),
+            .init(color: .black, location: 1),
+            
+        ]), startPoint: .top, endPoint: .bottom))
     }
     
     private var titleSubtitle: some View {
@@ -56,7 +71,7 @@ struct MealDetailView: View {
     
     private var cookingInstructions: some View {
         VStack(alignment: .leading) {
-            Text("Cooking Instructions")
+            Text("Cooking Instructions:")
                 .font(.headline)
                 .fontWeight(.semibold)
             
@@ -68,7 +83,7 @@ struct MealDetailView: View {
     
     private var ingredients: some View {
         VStack(alignment: .leading) {
-            Text("Ingredients")
+            Text("Ingredients:")
                 .font(.headline)
                 .fontWeight(.semibold)
             
