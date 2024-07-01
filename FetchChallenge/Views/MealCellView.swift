@@ -54,7 +54,7 @@ struct MealCellView: View {
     
     private var id: some View {
         Text(meal.id)
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
     }
     
     init(for meal: Meal, showingID: Bool) {

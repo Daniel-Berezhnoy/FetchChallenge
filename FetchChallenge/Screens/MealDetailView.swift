@@ -12,10 +12,9 @@ struct MealDetailView: View {
     
     var body: some View {
         ScrollView {
-//            Text("Hello, World!")
+            Text(meal.id)
         }
         .navigationTitle(meal.title.capitalized)
-//        .toolbarTitleDisplayMode(.inline)
     }
     
     init(for meal: Meal) {
