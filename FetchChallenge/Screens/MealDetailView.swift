@@ -12,10 +12,77 @@ struct MealDetailView: View {
     
     var body: some View {
         ScrollView {
-            Text(meal.id)
+            
+            VStack(alignment: .leading) {
+                image
+                titleSubtitle
+                cookingInstructions
+                ingredients
+            }
         }
-        .navigationTitle(meal.title.capitalized)
+        .navigationTitle("Details")
+        .toolbarTitleDisplayMode(.inline)
     }
+    
+    private var image: some View {
+        AsyncImage(url: URL(string: meal.imageURL)) { image in
+            image
+                .resizable()
+                .scaledToFit()
+            
+        } placeholder: {
+            Image(systemName: "carrot")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.secondary)
+                .padding(90)
+        }
+    }
+    
+    private var titleSubtitle: some View {
+        VStack(alignment: .leading) {
+            Text(meal.title)
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("British")
+                .font(.title3)
+                .fontWeight(.medium)
+                .foregroundStyle(.secondary)
+        }
+        .padding(.horizontal)
+    }
+    
+    private var cookingInstructions: some View {
+        VStack(alignment: .leading) {
+            Text("Cooking Instructions")
+                .font(.headline)
+                .fontWeight(.semibold)
+            
+            Text(instructions)
+        }
+        .padding(.horizontal)
+        .padding(.top)
+    }
+    
+    private var ingredients: some View {
+        VStack(alignment: .leading) {
+            Text("Ingredients")
+                .font(.headline)
+                .fontWeight(.semibold)
+            
+            VStack {
+                Text("esg")
+                Text("esg")
+                Text("esg")
+                Text("esg")
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top)
+    }
+    
+    let instructions = "Heat oven to 180C/160C fan/gas 4 and line the base and sides of a 20cm square tin with baking parchment (the easiest way is to cross 2 x 20cm-long strips over the base). To make the almond sponge, put the butter, sugar, flour, ground almonds, baking powder, eggs, vanilla and almond extract in a large bowl. Beat with an electric whisk until the mix comes together smoothly. Scrape into the tin, spreading to the corners, and bake for 25-30 mins 2013 when you poke in a skewer, it should come out clean. Cool in the tin for 10 mins, then transfer to a wire rack to finish cooling while you make the second sponge.\r\nFor the pink"
     
     init(for meal: Meal) {
         self.meal = meal
