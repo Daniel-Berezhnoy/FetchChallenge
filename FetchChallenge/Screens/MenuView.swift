@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-#warning("Toggle the ID")
 struct MenuView: View {
+    
     @State private var meals: [Meal] = []
+    @State private var showID = true
     
     var body: some View {
         NavigationStack {
@@ -18,13 +19,23 @@ struct MenuView: View {
                 NavigationLink {
                     MealDetailView(for: meal)
                 } label: {
-                    MealCellView(for: meal)
+                    MealCellView(for: meal, showingID: showID)
                 }
             }
             .navigationTitle("Menu")
             
             .onAppear { loadMenu() }
             .refreshable { loadMenu() }
+            
+            
+            .toolbar {
+                withAnimation {
+                    Toggle("Dessert ID", isOn: $showID)
+//                        .toggleStyle(.switch)
+                        .padding()
+                }
+            }
+            
         }
     }
     

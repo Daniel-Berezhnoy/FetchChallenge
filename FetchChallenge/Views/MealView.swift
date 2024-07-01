@@ -9,7 +9,9 @@ import SwiftUI
 import CachedAsyncImage
 
 struct MealCellView: View {
+    
     let meal: Meal
+    let showingID: Bool
     
     var body: some View {
         HStack {
@@ -17,10 +19,11 @@ struct MealCellView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 title
-                id
+                if showingID { id }
             }
             .padding(.leading)
         }
+        .padding(.vertical, 5)
         .fontDesign(.rounded)
     }
     
@@ -36,6 +39,8 @@ struct MealCellView: View {
         .scaledToFill()
         .frame(width: 120, height: 90)
         .cornerRadius(8)
+        
+        .overlay(RoundedRectangle(cornerRadius: 8).stroke(.secondary, lineWidth: 0.25))
     }
     
     private var title: some View {
@@ -52,11 +57,12 @@ struct MealCellView: View {
             .foregroundColor(.secondary)
     }
     
-    init(for meal: Meal) {
+    init(for meal: Meal, showingID: Bool) {
         self.meal = meal
+        self.showingID = showingID
     }
 }
 
 #Preview {
-    MealCellView(for: Meal.sampleItem)
+    MealCellView(for: Meal.sampleItem, showingID: true)
 }
