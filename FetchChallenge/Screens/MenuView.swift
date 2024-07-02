@@ -24,13 +24,12 @@ struct MenuView: View {
                 }
             }
             .navigationTitle("Menu")
-            
             .onAppear { loadMenu() }
             .refreshable { loadMenu() }
         }
     }
     
-    func loadMenu() {
+    private func loadMenu() {
         Task { meals = try await NetworkManager.shared.getMenuItems() }
     }
 }

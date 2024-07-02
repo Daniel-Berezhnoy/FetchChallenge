@@ -9,9 +9,10 @@ import Foundation
 
 final class NetworkManager {
     static let shared = NetworkManager()
+    static let baseURL = "https://themealdb.com/api/json/v1/1/"
     
-    static let baseURL = "https://themealdb.com/api/json/v1/1/filter.php?c="
-    private let dessertURL = baseURL + "Dessert"
+    private let dessertURL = baseURL + "filter.php?c=Dessert"
+    private let lookupURL = baseURL + "lookup.php?i="
     
     func getMenuItems() async throws -> [Meal] {
         
@@ -24,6 +25,23 @@ final class NetworkManager {
         do {
             let decoder = JSONDecoder()
             return try decoder.decode(MenuResponse.self, from: data).meals
+            
+        } catch {
+            throw FCError.invalidData
+        }
+    }
+    
+    func findDessert(withID: String) async throws -> Dessert {
+        
+        guard let checkedURL = URL(string: dessertURL) else {
+            throw FCError.invalidURL
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: checkedURL)
+        
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode(DessertResponse.self, from: data).meals
             
         } catch {
             throw FCError.invalidData

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MealDetailView: View {
     
+    @State private var limitLines = true
+    @State private var dessert: Dessert?
+    
     let meal: Meal
     let accentColor: Color
-    
-    @State private var limitLines = true
     
     var body: some View {
         ScrollView {
@@ -28,6 +29,10 @@ struct MealDetailView: View {
         .navigationTitle("Details")
         .toolbarTitleDisplayMode(.inline)
         .background { backgroundImage }
+        
+        
+        .onAppear { loadMealDetails() }
+        .refreshable { loadMealDetails() }
     }
     
     private var image: some View {
@@ -61,7 +66,7 @@ struct MealDetailView: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("british".capitalized)
+            Text(dessert?.strArea.capitalized ?? "")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundStyle(.white.opacity(0.75))
@@ -118,13 +123,18 @@ struct MealDetailView: View {
                     .resizable()
                     .scaledToFill()
             }
-            .opacity(0.5)
+            .opacity(0.4)
             .blur(radius: 20)
             .saturation(0.75)
             
             .scaleEffect(x: -1, y: 1, anchor: .center)
             .ignoresSafeArea(.all, edges: .all)
         }
+    }
+    
+    #warning("Network Call is not going off")
+    private func loadMealDetails() {
+        Task { dessert = try await NetworkManager.shared.findDessert(withID: meal.id) }
     }
     
     let instructions = "Heat oven to 180C/160C fan/gas 4 and line the base and sides of a 20cm square tin with baking parchment (the easiest way is to cross 2 x 20cm-long strips over the base). To make the almond sponge, put the butter, sugar, flour, ground almonds, baking powder, eggs, vanilla and almond extract in a large bowl. Beat with an electric whisk until the mix comes together smoothly. Scrape into the tin, spreading to the corners, and bake for 25-30 mins 2013 when you poke in a skewer, it should come out clean. Cool in the tin for 10 mins, then transfer to a wire rack to finish cooling while you make the second sponge.\r\nFor the pink"
