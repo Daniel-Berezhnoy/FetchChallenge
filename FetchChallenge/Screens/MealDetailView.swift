@@ -17,8 +17,10 @@ struct MealDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                image
-                titleSubtitle
+                ZStack(alignment: .bottomLeading) {
+                    image
+                    titleSubtitle
+                }
                 cookingInstructions
                 ingredients
             }
@@ -46,14 +48,12 @@ struct MealDetailView: View {
                     .foregroundStyle(.secondary)
                     .padding(90)
             }
-            
-            
+            .saturation(1.3)
         }
         .mask(LinearGradient(gradient: Gradient(stops: [
             .init(color: .black, location: 0),
             .init(color: .clear, location: 1),
-            
-                .init(color: .clear, location: 1),
+            .init(color: .clear, location: 1),
             .init(color: .black, location: 1),
             
         ]), startPoint: .top, endPoint: .bottom))
@@ -70,6 +70,7 @@ struct MealDetailView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
         }
+        .shadow(radius: 20)
         .padding(.horizontal)
     }
     
@@ -118,7 +119,9 @@ struct MealDetailView: View {
         }
         .opacity(0.4)
         .blur(radius: 20)
-        .rotationEffect(.degrees(180), anchor: .center) #error("Did not work")
+        .saturation(0.75)
+        
+        .scaleEffect(x: -1, y: 1, anchor: .center)
         .ignoresSafeArea(.all, edges: .all)
     }
     
