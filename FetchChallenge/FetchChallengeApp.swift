@@ -24,7 +24,7 @@ struct FetchChallengeApp: App {
     }
     
     private var menu: some View {
-        MenuView(showID: $showID)
+        MenuView(showID: $showID, accentColor: $accentColor)
             .tabItem {
                 Label {
                     Text("Menu")
