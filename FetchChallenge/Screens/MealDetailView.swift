@@ -118,6 +118,7 @@ struct MealDetailView: View {
         }
         .opacity(0.4)
         .blur(radius: 20)
+        .rotationEffect(.degrees(180), anchor: .center) #error("Did not work")
         .ignoresSafeArea(.all, edges: .all)
     }
     
