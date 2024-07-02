@@ -31,25 +31,21 @@ struct MealDetailView: View {
     }
     
     private var image: some View {
-        ZStack {
-            Rectangle()
-                .foregroundStyle(.black)
+        AsyncImage(url: URL(string: meal.imageURL)) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .offset(y: -3)
             
-            AsyncImage(url: URL(string: meal.imageURL)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .offset(y: -3)
-                
-            } placeholder: {
-                Image(systemName: "carrot")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.secondary)
-                    .padding(90)
-            }
-            .saturation(1.3)
+        } placeholder: {
+            Image(systemName: "carrot")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.secondary)
+                .padding(90)
         }
+        .saturation(1.3)
+        
         .mask(LinearGradient(gradient: Gradient(stops: [
             .init(color: .black, location: 0),
             .init(color: .clear, location: 1),
@@ -61,16 +57,16 @@ struct MealDetailView: View {
     
     private var titleSubtitle: some View {
         VStack(alignment: .leading) {
-            Text(meal.title)
+            Text(meal.title.capitalized)
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("British")
+            Text("british".capitalized)
                 .font(.title3)
                 .fontWeight(.medium)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white.opacity(0.75))
         }
-        .shadow(radius: 20)
+        .shadow(radius: 40)
         .padding(.horizontal)
     }
     
@@ -112,17 +108,23 @@ struct MealDetailView: View {
     }
     
     private var backgroundImage: some View {
-        AsyncImage(url: URL(string: meal.imageURL)) { image in
-            image.image?
-                .resizable()
-                .scaledToFill()
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.black)
+                .opacity(0.5)
+            
+            AsyncImage(url: URL(string: meal.imageURL)) { image in
+                image.image?
+                    .resizable()
+                    .scaledToFill()
+            }
+            .opacity(0.4)
+            .blur(radius: 20)
+            .saturation(0.75)
+            
+            .scaleEffect(x: -1, y: 1, anchor: .center)
+            .ignoresSafeArea(.all, edges: .all)
         }
-        .opacity(0.4)
-        .blur(radius: 20)
-        .saturation(0.75)
-        
-        .scaleEffect(x: -1, y: 1, anchor: .center)
-        .ignoresSafeArea(.all, edges: .all)
     }
     
     let instructions = "Heat oven to 180C/160C fan/gas 4 and line the base and sides of a 20cm square tin with baking parchment (the easiest way is to cross 2 x 20cm-long strips over the base). To make the almond sponge, put the butter, sugar, flour, ground almonds, baking powder, eggs, vanilla and almond extract in a large bowl. Beat with an electric whisk until the mix comes together smoothly. Scrape into the tin, spreading to the corners, and bake for 25-30 mins 2013 when you poke in a skewer, it should come out clean. Cool in the tin for 10 mins, then transfer to a wire rack to finish cooling while you make the second sponge.\r\nFor the pink"
