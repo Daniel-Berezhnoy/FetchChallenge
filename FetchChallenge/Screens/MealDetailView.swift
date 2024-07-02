@@ -30,7 +30,6 @@ struct MealDetailView: View {
         .toolbarTitleDisplayMode(.inline)
         .background { backgroundImage }
         
-        
         .onAppear { loadMealDetails() }
         .refreshable { loadMealDetails() }
     }

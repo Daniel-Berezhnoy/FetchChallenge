@@ -31,9 +31,9 @@ final class NetworkManager {
         }
     }
     
-    func findDessert(withID: String) async throws -> Dessert {
+    func findDessert(withID dessertID: String) async throws -> Dessert {
         
-        guard let checkedURL = URL(string: dessertURL) else {
+        guard let checkedURL = URL(string: lookupURL + dessertID) else {
             throw FCError.invalidURL
         }
         
