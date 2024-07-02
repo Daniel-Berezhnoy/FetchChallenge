@@ -118,7 +118,7 @@ struct MealDetailView: View {
                     .resizable()
                     .scaledToFill()
             }
-            .opacity(0.4)
+            .opacity(0.5)
             .blur(radius: 20)
             .saturation(0.75)
             
