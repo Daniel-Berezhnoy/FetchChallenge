@@ -129,16 +129,6 @@ struct MealDetailView: View {
         .padding(.top)
     }
     
-//    private var ingredientList: some View {
-//        ForEach(dessert?.measuredIngredients ?? loadingIngredients, id: \.0) { combined in
-//            HStack {
-//                Text(combined.ingredient.capitalized)
-//                Spacer()
-//                Text(combined.measurement)
-//            }
-//        }
-//    }
-    
     private var ingredientList: some View {
         ForEach(dessert?.measuredIngredients ?? loadingIngredients) { combined in
             HStack {
@@ -168,8 +158,6 @@ struct MealDetailView: View {
             .ignoresSafeArea(.all, edges: .all)
         }
     }
-    
-//    private let loadingIngredients = [("Loading...", "Loading...")]
     
     private var loadingIngredients: [Dessert.MeasuredIngredient] {
         return [Dessert.MeasuredIngredient(ingredient: "Loading...", measurement: "Loading...")]

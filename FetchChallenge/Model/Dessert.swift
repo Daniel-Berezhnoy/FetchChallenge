@@ -21,20 +21,6 @@ struct DessertResponse: Codable {
     let meals: [Dessert]
 }
 
-//extension Dessert {
-//    var measuredIngredients: [(ingredient: String, measurement: String)] {
-//        var combined: [(String, String)] = []
-//        
-//        for (index, ingredient) in ingredients.enumerated() {
-//            if let ingredient = ingredient, !ingredient.isEmpty {
-//                
-//                let measurement = measurements.indices.contains(index) ? (measurements[index] ?? "") : ""
-//                combined.append((ingredient, measurement))
-//            }
-//        }
-//        return combined
-//}
-
 extension Dessert {
     struct MeasuredIngredient: Hashable, Identifiable {
         let id = UUID()
