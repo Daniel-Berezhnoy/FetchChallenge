@@ -21,7 +21,7 @@ struct SettingsView: View {
         }
     }
     
-    // Views
+    // MARK: Views
     private var dessertIDToggle: some View {
         Toggle(isOn: $showID) {
             Label {

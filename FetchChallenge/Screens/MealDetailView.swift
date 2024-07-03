@@ -36,7 +36,7 @@ struct MealDetailView: View {
         .refreshable { loadMealDetails() }
     }
     
-    // Views
+    // MARK: Views
     private var image: some View {
         AsyncImage(url: URL(string: meal.imageURL)) { image in
             image
@@ -160,7 +160,7 @@ struct MealDetailView: View {
         }
     }
     
-    // Computed Properties
+    // MARK: Computed Properties
     private var formattedInstructions: String {
         dessert?.instructions
             .replacingOccurrences(of: "\n\r", with: "")
@@ -172,12 +172,12 @@ struct MealDetailView: View {
         return [Dessert.MeasuredIngredient(ingredient: "Loading...", measurement: "Loading...")]
     }
     
-    // Functions
+    // MARK: Functions
     private func loadMealDetails() {
         Task { dessert = try await NetworkManager.shared.findDessert(withID: meal.id) }
     }
     
-    // Init
+    // MARK: Init
     init(for meal: Meal, accentColor: Color) {
         self.meal = meal
         self.accentColor = accentColor

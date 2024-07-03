@@ -7,7 +7,7 @@
 
 import Foundation
 
-// FetchChallenge Error
+/// FetchChallenge Error
 enum FCError: Error {
     case invalidURL
     case invalidResponse

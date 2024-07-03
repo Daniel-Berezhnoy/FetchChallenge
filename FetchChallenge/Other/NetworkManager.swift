@@ -15,7 +15,7 @@ final class NetworkManager {
     private let dessertURL = baseURL + "filter.php?c=Dessert"
     private let lookupURL = baseURL + "lookup.php?i="
     
-    // Fetches the menu items and returns an array of Meals objects
+    /// Fetches the menu items and returns an array of Meals objects
     func getMenuItems() async throws -> [Meal] {
         
         guard let checkedURL = URL(string: dessertURL) else {
@@ -33,7 +33,7 @@ final class NetworkManager {
         }
     }
     
-    // Finds a dessert by its ID, fetches its details, and returns a Dessert object
+    /// Finds a dessert by its ID, fetches its details, and returns a Dessert object
     func findDessert(withID dessertID: String) async throws -> Dessert {
         
         guard let checkedURL = URL(string: lookupURL + dessertID) else {

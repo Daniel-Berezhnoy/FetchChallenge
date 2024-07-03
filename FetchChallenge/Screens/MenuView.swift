@@ -25,7 +25,7 @@ struct MenuView: View {
         }
     }
     
-    // Views
+    // MARK: Views
     private var loadingSpinner: some View {
         ZStack {
             if meals.isEmpty {
@@ -55,7 +55,7 @@ struct MenuView: View {
         }
     }
     
-    // Functions
+    // MARK: Functions
     private func loadMenu() {
         Task { meals = try await NetworkManager.shared.getMenuItems() }
     }
