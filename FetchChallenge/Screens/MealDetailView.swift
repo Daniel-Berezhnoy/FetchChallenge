@@ -15,8 +15,6 @@ struct MealDetailView: View {
     let meal: Meal
     let accentColor: Color
     
-    let fallbackYTLink = "https://www.youtube.com/watch?v=mhDJNfV7hjk"
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -144,16 +142,20 @@ struct MealDetailView: View {
     }
     
     private var ytButton: some View {
-        Link(destination: (URL(string: dessert?.ytLink ?? fallbackYTLink)!)) {
+        Link(destination: (URL(string: dessert?.ytLink ?? Meal.fallbackYTLink)!)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .frame(height: 50)
                     .foregroundStyle(.foreground)
                     .opacity(0.4)
                 
-                Text("Watch Video")
-                    .foregroundStyle(Color(uiColor: .systemBackground))
-                    .font(.headline)
+                Label {
+                    Text("Watch Video")
+                } icon: {
+                    Image(systemName: "play.rectangle")
+                }
+                .foregroundStyle(Color(uiColor: .systemBackground))
+                .font(.headline)
             }
         }
         .padding(.top)

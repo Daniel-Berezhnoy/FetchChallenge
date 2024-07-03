@@ -27,4 +27,5 @@ extension Meal {
 
 extension Meal {
     static let sample = Meal(id: "52768", title: "Apple Frangipan Tart", imageURL: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg")
+    static let fallbackYTLink = "https://www.youtube.com/watch?v=mhDJNfV7hjk"
 }
