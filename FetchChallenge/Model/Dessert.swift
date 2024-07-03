@@ -10,10 +10,14 @@ import Foundation
 struct Dessert: Hashable, Codable {
     let mealName: String
     let cuisine: String
-    
     let instructions: String
+    
     let ingredients: [String?]
     let measurements: [String?]
+}
+
+struct DessertResponse: Codable {
+    let meals: [Dessert]
 }
 
 extension Dessert {
@@ -22,7 +26,9 @@ extension Dessert {
         case cuisine = "strArea"
         case instructions = "strInstructions"
     }
-    
+}
+
+extension Dessert {
     struct DynamicCodingKeys: CodingKey {
         
         var stringValue: String
@@ -37,7 +43,9 @@ extension Dessert {
             return nil
         }
     }
-    
+}
+
+extension Dessert {
     init(from decoder: Decoder) throws {
         
         // Container for fixed keys
@@ -70,8 +78,4 @@ extension Dessert {
         self.ingredients = ingredientsArray
         self.measurements = measurementsArray
     }
-}
-
-struct DessertResponse: Codable {
-    let meals: [Dessert]
 }

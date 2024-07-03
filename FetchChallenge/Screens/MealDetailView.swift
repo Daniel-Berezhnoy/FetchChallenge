@@ -67,7 +67,7 @@ struct MealDetailView: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text(dessert?.cuisine.capitalized ?? "")
+            Text(dessert?.cuisine.capitalized ?? "Loading...")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
@@ -117,7 +117,7 @@ struct MealDetailView: View {
         .padding(.horizontal)
     }
     
-    #warning("Loop through all the ingridients")
+    #warning("Loop through all the ingredients")
     private var ingredients: some View {
         VStack(alignment: .leading) {
             
@@ -126,7 +126,7 @@ struct MealDetailView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            // Ingridients
+            // Ingredients
             Text(dessert?.ingredients.first??.capitalized ?? "")
                 .fontWeight(.medium)
             
@@ -175,4 +175,5 @@ struct MealDetailView: View {
 
 #Preview {
     MealDetailView(for: Meal.sampleItem, accentColor: .blue)
+        .ignoresSafeArea()
 }
