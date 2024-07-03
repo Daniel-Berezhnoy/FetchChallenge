@@ -117,14 +117,16 @@ struct MealDetailView: View {
         .padding(.horizontal)
     }
     
+    #warning("Loop through all the ingridients")
     private var ingredients: some View {
         VStack(alignment: .leading) {
+            
+            // Title
             Text("Ingredients:")
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            
-            
+            // Ingridients
             Text(dessert?.ingredients.first??.capitalized ?? "")
                 .fontWeight(.medium)
             

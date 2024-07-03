@@ -40,19 +40,21 @@ extension Dessert {
     
     init(from decoder: Decoder) throws {
         
-        // Container
+        // Container for fixed keys
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.cuisine = try container.decode(String.self, forKey: .cuisine)
         self.mealName = try container.decode(String.self, forKey: .mealName)
         self.instructions = try container.decode(String.self, forKey: .instructions)
         
+        // Initialize arrays
         var ingredientsArray: [String?] = []
         var measurementsArray: [String?] = []
         
-        // Dynamic Container
+        // Dynamic container for ingredients and measurements
         let dynamicContainer = try decoder.container(keyedBy: DynamicCodingKeys.self)
         
+        // Loop through 1 to 20 to decode ingredients and measurements
         for i in 1...20 {
             if let measurementKey = DynamicCodingKeys(stringValue: "strMeasure\(i)"),
                let ingredientKey = DynamicCodingKeys(stringValue: "strIngredient\(i)") {
