@@ -23,6 +23,7 @@ struct MealDetailView: View {
                     titleSubtitle
                 }
                 cookingInstructions
+                seeMoreButton
                 ingredients
             }
         }
@@ -90,25 +91,29 @@ struct MealDetailView: View {
             
             Text(dessert?.strInstructions ?? "")
                 .lineLimit(limitLines ? 3 : 100)
-            
-            Button {
-                withAnimation(.bouncy) { limitLines.toggle() }
-            } label: {
-                Label {
-                    Text(limitLines ? "See More" : "See Less")
-                } icon: {
-                    Image(systemName: limitLines ? "chevron.down" : "chevron.up")
-                }
-                .fontWeight(.medium)
-            }
-            .buttonBorderShape(.capsule)
-            .buttonStyle(.borderedProminent)
-            
-            .tint(.secondary.opacity(0.5))
-            .foregroundStyle(Color(uiColor: .systemBackground))
         }
         .padding(.horizontal)
         .padding(.top)
+    }
+    
+    private var seeMoreButton: some View {
+        Button {
+            withAnimation(.bouncy) { limitLines.toggle() }
+        } label: {
+            Label {
+                Text(limitLines ? "See More" : "See Less")
+            } icon: {
+                Image(systemName: limitLines ? "chevron.down" : "chevron.up")
+            }
+            .fontWeight(.medium)
+        }
+        .buttonBorderShape(.capsule)
+        .buttonStyle(.borderedProminent)
+        
+        .tint(.secondary.opacity(0.5))
+        .foregroundStyle(Color(uiColor: .systemBackground))
+        
+        .padding(.horizontal)
     }
     
     private var ingredients: some View {
