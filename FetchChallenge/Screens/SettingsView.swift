@@ -10,12 +10,13 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var showID: Bool
-    let accentColor: Color
+    @Binding var accentColor: Color
     
     var body: some View {
         NavigationStack {
             List {
                 dessertIDToggle
+                colorPicker
             }
             .navigationTitle("Settings")
         }
@@ -33,8 +34,19 @@ struct SettingsView: View {
         }
         .tint(accentColor)
     }
+    
+    private var colorPicker: some View {
+        ColorPicker(selection: $accentColor) {
+            Label {
+                Text("Accent Color")
+            } icon: {
+                Image(systemName: "paintpalette.fill")
+                    .foregroundStyle(accentColor)
+            }
+        }
+    }
 }
 
 #Preview {
-    return SettingsView(showID: .constant(true), accentColor: .pink)
+    return SettingsView(showID: .constant(true), accentColor: .constant(.pink))
 }

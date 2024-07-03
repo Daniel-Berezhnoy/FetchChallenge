@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// Add Color Selection
-// Add Comments
-
 struct FCTabView: View {
     
     @State private var accentColor = Color.blue
@@ -36,7 +33,7 @@ struct FCTabView: View {
     }
     
     private var settings: some View {
-        SettingsView(showID: $showID, accentColor: accentColor)
+        SettingsView(showID: $showID, accentColor: $accentColor)
             .tabItem {
                 Label {
                     Text("Settings")
