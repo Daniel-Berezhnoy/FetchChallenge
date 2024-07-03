@@ -122,12 +122,27 @@ struct MealDetailView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            VStack {
-                Text("esg")
-                Text("esg")
-                Text("esg")
-                Text("esg")
-            }
+            Text(dessert?.strIngredient1 ?? "")
+            Text(dessert?.strIngredient2 ?? "")
+            Text(dessert?.strIngredient3 ?? "")
+            Text(dessert?.strIngredient4 ?? "")
+            Text(dessert?.strIngredient5 ?? "")
+            Text(dessert?.strIngredient6 ?? "")
+            Text(dessert?.strIngredient7 ?? "")
+            Text(dessert?.strIngredient8 ?? "")
+            Text(dessert?.strIngredient9 ?? "")
+            Text(dessert?.strIngredient10 ?? "")
+            
+            Text(dessert?.strIngredient11 ?? "")
+            Text(dessert?.strIngredient12 ?? "")
+            Text(dessert?.strIngredient13 ?? "")
+            Text(dessert?.strIngredient14 ?? "")
+            Text(dessert?.strIngredient15 ?? "")
+            Text(dessert?.strIngredient16 ?? "")
+            Text(dessert?.strIngredient17 ?? "")
+            Text(dessert?.strIngredient18 ?? "")
+            Text(dessert?.strIngredient19 ?? "")
+            Text(dessert?.strIngredient20 ?? "")
         }
         .padding(.horizontal)
         .padding(.top)
