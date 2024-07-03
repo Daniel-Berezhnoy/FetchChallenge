@@ -19,6 +19,7 @@
 		B92C98F12C2F921D0064C19B /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98F02C2F921D0064C19B /* MealDetailView.swift */; };
 		B92C98F32C3266780064C19B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98F22C3266780064C19B /* SettingsView.swift */; };
 		B92C98F52C3469540064C19B /* Dessert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98F42C3469540064C19B /* Dessert.swift */; };
+		B92C98F72C3600AA0064C19B /* FCTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C98F62C3600AA0064C19B /* FCTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B92C98F02C2F921D0064C19B /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		B92C98F22C3266780064C19B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B92C98F42C3469540064C19B /* Dessert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dessert.swift; sourceTree = "<group>"; };
+		B92C98F62C3600AA0064C19B /* FCTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		B92C98EC2C2F83F10064C19B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B92C98F62C3600AA0064C19B /* FCTabView.swift */,
 				B92C98D52C2F70470064C19B /* MenuView.swift */,
 				B92C98F22C3266780064C19B /* SettingsView.swift */,
 				B92C98F02C2F921D0064C19B /* MealDetailView.swift */,
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B92C98F72C3600AA0064C19B /* FCTabView.swift in Sources */,
 				B92C98E82C2F79470064C19B /* NetworkManager.swift in Sources */,
 				B92C98F32C3266780064C19B /* SettingsView.swift in Sources */,
 				B92C98E22C2F70D10064C19B /* Meal.swift in Sources */,
