@@ -171,9 +171,15 @@ struct MealDetailView: View {
         self.meal = meal
         self.accentColor = accentColor
     }
+    
+//    init(dessert: State<Dessert?>, meal: Meal, accentColor: Color) {
+//        _dessert = dessert
+//        self.meal = meal
+//        self.accentColor = accentColor
+//    }
 }
 
 #Preview {
-    MealDetailView(for: Meal.sampleItem, accentColor: .blue)
+    MealDetailView(for: Meal.sample, accentColor: .blue)
         .ignoresSafeArea()
 }

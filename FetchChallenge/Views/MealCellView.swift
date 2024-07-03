@@ -64,5 +64,5 @@ struct MealCellView: View {
 }
 
 #Preview {
-    MealCellView(for: Meal.sampleItem, showingID: true)
+    MealCellView(for: Meal.sample, showingID: true)
 }

@@ -26,5 +26,5 @@ extension Meal {
 }
 
 extension Meal {
-    static let sampleItem = Meal(id: "1234", title: "Title", imageURL: "https://picsum.photos/2000")
+    static let sample = Meal(id: "52768", title: "Apple Frangipan Tart", imageURL: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg")
 }
