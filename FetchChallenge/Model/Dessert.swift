@@ -21,17 +21,44 @@ struct DessertResponse: Codable {
     let meals: [Dessert]
 }
 
+//extension Dessert {
+//    var measuredIngredients: [(ingredient: String, measurement: String)] {
+//        var combined: [(String, String)] = []
+//        
+//        for (index, ingredient) in ingredients.enumerated() {
+//            if let ingredient = ingredient, !ingredient.isEmpty {
+//                
+//                let measurement = measurements.indices.contains(index) ? (measurements[index] ?? "") : ""
+//                combined.append((ingredient, measurement))
+//            }
+//        }
+//        return combined
+//}
+
 extension Dessert {
-    var measuredIngredients: [(ingredient: String, measurement: String)] {
-        var combined: [(String, String)] = []
+    struct MeasuredIngredient: Hashable, Identifiable {
+        let id = UUID()
+        let ingredient: String
+        let measurement: String
+    }
+    
+    var measuredIngredients: [MeasuredIngredient] {
+        var combined: [MeasuredIngredient] = []
+        var seen: Set<MeasuredIngredient> = []
         
         for (index, ingredient) in ingredients.enumerated() {
             if let ingredient = ingredient, !ingredient.isEmpty {
                 
                 let measurement = measurements.indices.contains(index) ? (measurements[index] ?? "") : ""
-                combined.append((ingredient, measurement))
+                let pair = MeasuredIngredient(ingredient: ingredient, measurement: measurement)
+                
+                if !seen.contains(pair) {
+                    combined.append(pair)
+                    seen.insert(pair)
+                }
             }
         }
+        
         return combined
     }
 }
