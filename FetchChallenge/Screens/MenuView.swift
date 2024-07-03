@@ -15,17 +15,28 @@ struct MenuView: View {
     
     var body: some View {
         NavigationStack {
-            List(meals, id: \.self) { meal in
-    
-                NavigationLink {
-                    MealDetailView(for: meal, accentColor: accentColor)
-                } label: {
-                    MealCellView(for: meal, showingID: showID)
-                }
+            ZStack {
+                loadingSpinner
+                menuList
             }
             .navigationTitle("Menu")
             .onAppear { loadMenu() }
             .refreshable { loadMenu() }
+        }
+    }
+    
+    #warning("Change")
+    private var loadingSpinner: some View {
+        Text("Change This")
+    }
+    
+    private var menuList: some View {
+        List(meals, id: \.self) { meal in
+            NavigationLink {
+                MealDetailView(for: meal, accentColor: accentColor)
+            } label: {
+                MealCellView(for: meal, showingID: showID)
+            }
         }
     }
     

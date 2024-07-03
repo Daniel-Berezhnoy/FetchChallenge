@@ -131,7 +131,6 @@ struct MealDetailView: View {
         }
     }
     
-    #warning("Network Call is not going off")
     private func loadMealDetails() {
         Task { dessert = try await NetworkManager.shared.findDessert(withID: meal.id) }
     }

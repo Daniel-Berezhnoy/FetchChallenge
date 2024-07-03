@@ -26,5 +26,5 @@ struct Dessert: Hashable, Codable {
 }
 
 struct DessertResponse: Codable {
-    let meals: Dessert
+    let meals: [Dessert]
 }

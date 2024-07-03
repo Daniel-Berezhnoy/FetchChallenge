@@ -41,7 +41,7 @@ final class NetworkManager {
         
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode(DessertResponse.self, from: data).meals
+            return try decoder.decode(DessertResponse.self, from: data).meals.first!
             
         } catch {
             throw FCError.invalidData
