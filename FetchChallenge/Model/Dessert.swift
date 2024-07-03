@@ -24,56 +24,42 @@ extension Dessert {
     }
     
     struct DynamicCodingKeys: CodingKey {
+        
         var stringValue: String
+        
         init?(stringValue: String) {
             self.stringValue = stringValue
         }
         
         var intValue: Int?
+        
         init?(intValue: Int) {
             return nil
         }
     }
     
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(mealName, forKey: .mealName)
-        try container.encode(cuisine, forKey: .cuisine)
-        try container.encode(instructions, forKey: .instructions)
-        
-        var dynamicContainer = encoder.container(keyedBy: DynamicCodingKeys.self)
-        
-        for (index, ingredient) in ingredients.enumerated() {
-            if let ingredientKey = DynamicCodingKeys(stringValue: "strIngredient\(index + 1)") {
-                try dynamicContainer.encode(ingredient, forKey: ingredientKey)
-            }
-        }
-        
-        for (index, measurement) in measurements.enumerated() {
-            if let measurementKey = DynamicCodingKeys(stringValue: "strMeasure\(index + 1)") {
-                try dynamicContainer.encode(measurement, forKey: measurementKey)
-            }
-        }
-    }
-    
     init(from decoder: Decoder) throws {
+        
+        // Container
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.mealName = try container.decode(String.self, forKey: .mealName)
         self.cuisine = try container.decode(String.self, forKey: .cuisine)
+        self.mealName = try container.decode(String.self, forKey: .mealName)
         self.instructions = try container.decode(String.self, forKey: .instructions)
         
         var ingredientsArray: [String?] = []
         var measurementsArray: [String?] = []
         
+        // Dynamic Container
         let dynamicContainer = try decoder.container(keyedBy: DynamicCodingKeys.self)
         
         for i in 1...20 {
-            if let ingredientKey = DynamicCodingKeys(stringValue: "strIngredient\(i)"),
-               let measurementKey = DynamicCodingKeys(stringValue: "strMeasure\(i)") {
+            if let measurementKey = DynamicCodingKeys(stringValue: "strMeasure\(i)"),
+               let ingredientKey = DynamicCodingKeys(stringValue: "strIngredient\(i)") {
+                
                 let ingredient = try dynamicContainer.decodeIfPresent(String.self, forKey: ingredientKey)
                 let measurement = try dynamicContainer.decodeIfPresent(String.self, forKey: measurementKey)
+                
                 ingredientsArray.append(ingredient)
                 measurementsArray.append(measurement)
             }
