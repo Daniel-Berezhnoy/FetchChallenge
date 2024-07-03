@@ -6,11 +6,12 @@
 //
 
 #warning("Checklist")
-// Add Color Selection
-// Add Comments
-// Add Tabview
+// Add TabView
 // Reorganize Files
 // Add haptics on see more
+// Add Color Selection
+// Add Comments
+
 import SwiftUI
 
 @main
