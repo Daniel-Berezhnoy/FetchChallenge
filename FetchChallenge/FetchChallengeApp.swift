@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct FetchChallengeApp: App {
     
-    @State private var accentColor = Color.pink
+    @State private var accentColor = Color.purple
     @State private var showID = true
     
     var body: some Scene {

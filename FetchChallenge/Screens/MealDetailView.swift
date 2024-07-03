@@ -65,7 +65,7 @@ struct MealDetailView: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text(dessert?.strArea.capitalized ?? "Hello Test")
+            Text(dessert?.strArea.capitalized ?? "")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
@@ -88,15 +88,24 @@ struct MealDetailView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            Text(instructions)
+            Text(dessert?.strInstructions ?? "")
                 .lineLimit(limitLines ? 3 : 100)
             
-            Button(limitLines ? "See more..." : "See less...") {
-                withAnimation(.bouncy) {
-                    limitLines.toggle()
+            Button {
+                withAnimation(.bouncy) { limitLines.toggle() }
+            } label: {
+                Label {
+                    Text(limitLines ? "See More" : "See Less")
+                } icon: {
+                    Image(systemName: limitLines ? "chevron.down" : "chevron.up")
                 }
+                .fontWeight(.medium)
             }
-            .tint(accentColor)
+            .buttonBorderShape(.capsule)
+            .buttonStyle(.borderedProminent)
+            
+            .tint(.secondary.opacity(0.5))
+            .foregroundStyle(Color(uiColor: .systemBackground))
         }
         .padding(.horizontal)
         .padding(.top)
@@ -143,8 +152,6 @@ struct MealDetailView: View {
         Task { dessert = try await NetworkManager.shared.findDessert(withID: meal.id) }
     }
     
-    let instructions = "Heat oven to 180C/160C fan/gas 4 and line the base and sides of a 20cm square tin with baking parchment (the easiest way is to cross 2 x 20cm-long strips over the base). To make the almond sponge, put the butter, sugar, flour, ground almonds, baking powder, eggs, vanilla and almond extract in a large bowl. Beat with an electric whisk until the mix comes together smoothly. Scrape into the tin, spreading to the corners, and bake for 25-30 mins 2013 when you poke in a skewer, it should come out clean. Cool in the tin for 10 mins, then transfer to a wire rack to finish cooling while you make the second sponge.\r\nFor the pink"
-    
     init(for meal: Meal, accentColor: Color) {
         self.meal = meal
         self.accentColor = accentColor
@@ -152,5 +159,5 @@ struct MealDetailView: View {
 }
 
 #Preview {
-    MealDetailView(for: Meal.sampleItem, accentColor: .pink)
+    MealDetailView(for: Meal.sampleItem, accentColor: .blue)
 }
