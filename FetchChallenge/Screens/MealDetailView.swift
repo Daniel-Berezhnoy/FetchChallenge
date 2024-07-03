@@ -65,13 +65,21 @@ struct MealDetailView: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text(dessert?.strArea.capitalized ?? "")
+            Text(dessert?.strArea.capitalized ?? "Hello Test")
                 .font(.title3)
                 .fontWeight(.medium)
-                .foregroundStyle(.white.opacity(0.75))
+                .foregroundStyle(.secondary)
         }
-        .shadow(radius: 40)
         .padding(.horizontal)
+        .padding(.vertical, 7)
+        .background (Material.ultraThin.opacity(0.5))
+        
+        .clipShape(.rect(topLeadingRadius: 0,
+                         bottomLeadingRadius: 0,
+                         bottomTrailingRadius: 20,
+                         topTrailingRadius: 20,
+                         style: .continuous)
+        )
     }
     
     private var cookingInstructions: some View {
