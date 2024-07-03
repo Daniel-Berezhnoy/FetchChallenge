@@ -72,7 +72,7 @@ struct MealDetailView: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 7)
-        .background (Material.ultraThin.opacity(0.5))
+        .background(Material.ultraThin.opacity(0.5))
         
         .clipShape(.rect(topLeadingRadius: 0,
                          bottomLeadingRadius: 0,

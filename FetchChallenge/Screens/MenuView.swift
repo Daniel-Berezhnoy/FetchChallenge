@@ -34,6 +34,7 @@ struct MenuView: View {
                     
                     Text("Loading...")
                         .font(.headline)
+                        .foregroundStyle(accentColor)
                         .opacity(0.75)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
