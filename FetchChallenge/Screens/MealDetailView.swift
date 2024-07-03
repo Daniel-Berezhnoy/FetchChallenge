@@ -129,31 +129,37 @@ struct MealDetailView: View {
         .padding(.top)
     }
     
+//    private var ingredientList: some View {
+//        VStack(alignment: .leading) {
+//            ForEach(dessert?.ingredients ?? ["Loading..."], id: \.self) { ingredient in
+//                
+//                Text(ingredient ?? "Loading...")
+//                    .fontWeight(.medium)
+//                
+//                +
+//                
+//                Text(" - ")
+//                
+//                +
+//                
+//                Text((dessert?.measurements.first ?? "") ?? "")
+//                .foregroundStyle(accentColor)
+//            }
+//        }
+//    }
+    
     private var ingredientList: some View {
         VStack(alignment: .leading) {
-            ForEach(dessert?.ingredients ?? ["Loading..."], id: \.self) { ingredient in
+            ForEach(dessert?.measuredIngredients ?? loadingIngredients, id: \.0) { combined in
                 
-                
-                
-//                Text(dessert?.ingredients.first??.capitalized ?? "")
-//                    .fontWeight(.medium)
-                
-                Text(ingredient ?? "Loading...")
-                    .fontWeight(.medium)
-                
-                +
-                
-                Text(" - ")
-                
-                +
-                
-//                Text((dessert?.measurements.first ?? "") ?? "")
-//                    .foregroundStyle(accentColor)
-                
-                Text((dessert?.measurements.first ?? "") ?? "")
-                    .foregroundStyle(accentColor)
-                
-                
+                HStack {
+                    Text(combined.ingredient.capitalized)
+                    
+                    Spacer()
+                    
+                    Text(combined.measurement)
+                        .fontWeight(.medium)
+                }
             }
         }
     }
@@ -177,6 +183,8 @@ struct MealDetailView: View {
             .ignoresSafeArea(.all, edges: .all)
         }
     }
+    
+    private let loadingIngredients = [("Loading...", "Loading...")]
     
     private func loadMealDetails() {
         Task { dessert = try await NetworkManager.shared.findDessert(withID: meal.id) }
