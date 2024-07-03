@@ -101,6 +101,7 @@ struct MealDetailView: View {
     
     private var seeMoreButton: some View {
         Button {
+            HapticManager.playImpact(style: .medium)
             withAnimation(.bouncy(duration: 0.3)) { limitLines.toggle() }
         } label: {
             Label {
@@ -145,7 +146,7 @@ struct MealDetailView: View {
         Link(destination: (URL(string: dessert?.ytLink ?? Meal.fallbackYTLink)!)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .frame(height: 50)
+                    .frame(height: 55)
                     .foregroundStyle(.foreground)
                     .opacity(0.4)
                 
