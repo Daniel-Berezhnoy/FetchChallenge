@@ -90,8 +90,8 @@ struct MealDetailView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            Text(dessert?.instructions ?? "")
-                .lineLimit(limitLines ? 3 : 100)
+            Text(formattedInstructions)
+                .lineLimit(limitLines ? 3 : 300)
         }
         .padding(.horizontal)
         .padding(.top)
@@ -157,6 +157,13 @@ struct MealDetailView: View {
             .scaleEffect(x: -1, y: 1, anchor: .center)
             .ignoresSafeArea(.all, edges: .all)
         }
+    }
+    
+    private var formattedInstructions: String {
+        dessert?.instructions
+            .replacingOccurrences(of: "\n\r", with: "")
+            .replacingOccurrences(of: "\r\n", with: "\r\n\r\n")
+        ?? ""
     }
     
     private var loadingIngredients: [Dessert.MeasuredIngredient] {
