@@ -8,10 +8,11 @@
 import Foundation
 
 struct Dessert: Hashable, Codable {
-    
     let mealName: String
     let cuisine: String
+    
     let instructions: String
+    let ytLink: String
     
     let ingredients: [String?]
     let measurements: [String?]
@@ -33,7 +34,7 @@ extension Dessert {
         var seen: Set<MeasuredIngredient> = []
         
         for (index, ingredient) in ingredients.enumerated() {
-            if let ingredient = ingredient, !ingredient.isEmpty {
+            if let ingredient, !ingredient.isEmpty {
                 
                 let measurement = measurements.indices.contains(index) ? (measurements[index] ?? "") : ""
                 let pair = MeasuredIngredient(ingredient: ingredient, measurement: measurement)
@@ -54,6 +55,7 @@ extension Dessert {
         case mealName = "strMeal"
         case cuisine = "strArea"
         case instructions = "strInstructions"
+        case ytLink = "strYoutube"
     }
 }
 
@@ -80,9 +82,10 @@ extension Dessert {
         // Container for fixed keys
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.cuisine = try container.decode(String.self, forKey: .cuisine)
         self.mealName = try container.decode(String.self, forKey: .mealName)
+        self.cuisine = try container.decode(String.self, forKey: .cuisine)
         self.instructions = try container.decode(String.self, forKey: .instructions)
+        self.ytLink = try container.decode(String.self, forKey: .ytLink)
         
         // Initialize arrays
         var ingredientsArray: [String?] = []

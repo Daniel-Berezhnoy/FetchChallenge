@@ -5,12 +5,18 @@
 //  Created by Daniel Berezhnoy on 6/28/24.
 //
 
+#warning("Checklist")
+// Add Color Selection
+// Add Comments
+// Add Tabview
+// Reorganize Files
+// Add haptics on see more
 import SwiftUI
 
 @main
 struct FetchChallengeApp: App {
     
-    @State private var accentColor = Color.purple
+    @State private var accentColor = Color.blue
     @State private var showID = true
     
     var body: some Scene {

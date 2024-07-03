@@ -34,6 +34,13 @@ struct MealDetailView: View {
         
         .onAppear { loadMealDetails() }
         .refreshable { loadMealDetails() }
+        
+//        .overlay {
+//            Text(dessert?.ytLink ?? "")
+//                .foregroundStyle(.black)
+//                .background(Color.white)
+//                .padding(.bottom, 400)
+//        }
     }
     
     // MARK: Views
@@ -100,7 +107,7 @@ struct MealDetailView: View {
     
     private var seeMoreButton: some View {
         Button {
-            withAnimation(.bouncy) { limitLines.toggle() }
+            withAnimation(.bouncy(duration: 0.3)) { limitLines.toggle() }
         } label: {
             Label {
                 Text(limitLines ? "See More" : "See Less")
