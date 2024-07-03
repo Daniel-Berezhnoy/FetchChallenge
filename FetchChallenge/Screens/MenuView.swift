@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @State private var searchTerm = ""
     @State private var meals: [Meal] = []
+    
     @Binding var showID: Bool
     @Binding var accentColor: Color
     
@@ -23,11 +25,12 @@ struct MenuView: View {
             .onAppear { loadMenu() }
             .refreshable { loadMenu() }
         }
+        .searchable(text: $searchTerm)
     }
     
     // MARK: Views
     private var menuList: some View {
-        List(meals) { meal in
+        List(searchResults) { meal in
             NavigationLink {
                 MealDetailView(for: meal, accentColor: accentColor)
             } label: {
@@ -52,6 +55,16 @@ struct MenuView: View {
                 .ignoresSafeArea(.all)
                 .background { Color(uiColor: .systemBackground) }
             }
+        }
+    }
+    
+    
+    // MARK: Computed Properties
+    private var searchResults: [Meal] {
+        if searchTerm.isEmpty {
+            return meals
+        } else {
+            return meals.filter { $0.title.contains(searchTerm) || $0.id.contains(searchTerm) }
         }
     }
     
