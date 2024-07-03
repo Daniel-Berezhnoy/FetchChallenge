@@ -23,7 +23,7 @@ struct MealDetailView: View {
                     titleSubtitle
                 }
                 cookingInstructions
-                seeMoreButton
+                showMoreButton
                 ingredients
                 ytButton
             }
@@ -99,13 +99,13 @@ struct MealDetailView: View {
         .padding(.top)
     }
     
-    private var seeMoreButton: some View {
+    private var showMoreButton: some View {
         Button {
             HapticManager.playImpact(style: .medium)
             withAnimation(.bouncy(duration: 0.3)) { limitLines.toggle() }
         } label: {
             Label {
-                Text(limitLines ? "See More" : "See Less")
+                Text(limitLines ? "Show More" : "Show Less")
             } icon: {
                 Image(systemName: limitLines ? "chevron.down" : "chevron.up")
             }
