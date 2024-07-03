@@ -23,6 +23,7 @@ struct FetchChallengeApp: App {
         }
     }
     
+    // Screens
     private var menu: some View {
         MenuView(showID: $showID, accentColor: $accentColor)
             .tabItem {

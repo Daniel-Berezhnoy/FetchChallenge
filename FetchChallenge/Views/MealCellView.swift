@@ -27,6 +27,7 @@ struct MealCellView: View {
         .fontDesign(.rounded)
     }
     
+    // Views
     private var image: some View {
         CachedAsyncImage(url: URL(string: meal.imageURL)) { image in
             image.resizable()
@@ -57,6 +58,7 @@ struct MealCellView: View {
             .foregroundStyle(.secondary)
     }
     
+    // Init
     init(for meal: Meal, showingID: Bool) {
         self.meal = meal
         self.showingID = showingID

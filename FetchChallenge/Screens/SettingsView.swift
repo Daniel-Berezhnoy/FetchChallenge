@@ -15,18 +15,23 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Toggle(isOn: $showID) {
-                    Label {
-                        Text("Show Dessert ID")
-                    } icon: {
-                        Image(systemName: "person.text.rectangle.fill")
-                            .foregroundStyle(accentColor)
-                    }
-                }
-                .tint(accentColor)
+                dessertIDToggle
             }
             .navigationTitle("Settings")
         }
+    }
+    
+    // Views
+    private var dessertIDToggle: some View {
+        Toggle(isOn: $showID) {
+            Label {
+                Text("Show Dessert ID")
+            } icon: {
+                Image(systemName: "person.text.rectangle.fill")
+                    .foregroundStyle(accentColor)
+            }
+        }
+        .tint(accentColor)
     }
 }
 

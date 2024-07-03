@@ -8,12 +8,14 @@
 import Foundation
 
 final class NetworkManager {
+    
     static let shared = NetworkManager()
     static let baseURL = "https://themealdb.com/api/json/v1/1/"
     
     private let dessertURL = baseURL + "filter.php?c=Dessert"
     private let lookupURL = baseURL + "lookup.php?i="
     
+    // Fetches the menu items and returns an array of Meals objects
     func getMenuItems() async throws -> [Meal] {
         
         guard let checkedURL = URL(string: dessertURL) else {
@@ -31,6 +33,7 @@ final class NetworkManager {
         }
     }
     
+    // Finds a dessert by its ID, fetches its details, and returns a Dessert object
     func findDessert(withID dessertID: String) async throws -> Dessert {
         
         guard let checkedURL = URL(string: lookupURL + dessertID) else {
