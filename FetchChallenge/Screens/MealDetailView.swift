@@ -129,37 +129,13 @@ struct MealDetailView: View {
         .padding(.top)
     }
     
-//    private var ingredientList: some View {
-//        VStack(alignment: .leading) {
-//            ForEach(dessert?.ingredients ?? ["Loading..."], id: \.self) { ingredient in
-//                
-//                Text(ingredient ?? "Loading...")
-//                    .fontWeight(.medium)
-//                
-//                +
-//                
-//                Text(" - ")
-//                
-//                +
-//                
-//                Text((dessert?.measurements.first ?? "") ?? "")
-//                .foregroundStyle(accentColor)
-//            }
-//        }
-//    }
-    
     private var ingredientList: some View {
-        VStack(alignment: .leading) {
-            ForEach(dessert?.measuredIngredients ?? loadingIngredients, id: \.0) { combined in
-                
-                HStack {
-                    Text(combined.ingredient.capitalized)
-                    
-                    Spacer()
-                    
-                    Text(combined.measurement)
-                        .fontWeight(.medium)
-                }
+        ForEach(dessert?.measuredIngredients ?? loadingIngredients, id: \.0) { combined in
+            
+            HStack {
+                Text(combined.ingredient.capitalized)
+                Spacer()
+                Text(combined.measurement)
             }
         }
     }
@@ -194,12 +170,6 @@ struct MealDetailView: View {
         self.meal = meal
         self.accentColor = accentColor
     }
-    
-//    init(dessert: State<Dessert?>, meal: Meal, accentColor: Color) {
-//        _dessert = dessert
-//        self.meal = meal
-//        self.accentColor = accentColor
-//    }
 }
 
 #Preview {
