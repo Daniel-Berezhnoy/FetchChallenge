@@ -26,6 +26,16 @@ struct MenuView: View {
     }
     
     // MARK: Views
+    private var menuList: some View {
+        List(meals) { meal in
+            NavigationLink {
+                MealDetailView(for: meal, accentColor: accentColor)
+            } label: {
+                MealCellView(for: meal, showingID: showID)
+            }
+        }
+    }
+    
     private var loadingSpinner: some View {
         ZStack {
             if meals.isEmpty {
@@ -41,16 +51,6 @@ struct MenuView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea(.all)
                 .background { Color(uiColor: .systemBackground) }
-            }
-        }
-    }
-    
-    private var menuList: some View {
-        List(meals, id: \.self) { meal in
-            NavigationLink {
-                MealDetailView(for: meal, accentColor: accentColor)
-            } label: {
-                MealCellView(for: meal, showingID: showID)
             }
         }
     }
