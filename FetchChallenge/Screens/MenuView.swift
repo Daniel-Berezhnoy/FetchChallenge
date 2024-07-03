@@ -16,8 +16,8 @@ struct MenuView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                loadingSpinner
                 menuList
+                loadingSpinner
             }
             .navigationTitle("Menu")
             .onAppear { loadMenu() }
@@ -25,9 +25,22 @@ struct MenuView: View {
         }
     }
     
-    #warning("Change")
     private var loadingSpinner: some View {
-        Text("Change This")
+        ZStack {
+            if meals.isEmpty {
+                VStack(spacing: 13) {
+                    ProgressView()
+                        .controlSize(.extraLarge)
+                    
+                    Text("Loading...")
+                        .font(.headline)
+                        .opacity(0.75)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea(.all)
+                .background { Color(uiColor: .systemBackground) }
+            }
+        }
     }
     
     private var menuList: some View {
