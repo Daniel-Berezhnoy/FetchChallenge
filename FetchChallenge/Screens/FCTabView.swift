@@ -20,7 +20,7 @@ struct FCTabView: View {
         .tint(accentColor)
     }
     
-    // Screens
+    // MARK: Screens
     private var menu: some View {
         MenuView(showID: $showID, accentColor: $accentColor)
             .tabItem {

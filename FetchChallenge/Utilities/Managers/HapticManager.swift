@@ -9,6 +9,7 @@ import SwiftUI
 import CoreHaptics
 
 struct HapticManager {
+    /// Plays haptic feedback
     static func playImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
