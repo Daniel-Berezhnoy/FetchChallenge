@@ -26,6 +26,7 @@ struct MealDetailView: View {
                 seeMoreButton
                 ingredients
             }
+            .padding(.bottom)
         }
         .navigationTitle("Details")
         .toolbarTitleDisplayMode(.inline)
@@ -66,14 +67,14 @@ struct MealDetailView: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text(dessert?.strArea.capitalized ?? "")
+            Text(dessert?.cuisine.capitalized ?? "")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
         }
         .padding(.horizontal)
         .padding(.vertical, 7)
-        .background(Material.ultraThin.opacity(0.5))
+        .background(Material.ultraThin.opacity(0.75))
         
         .clipShape(.rect(topLeadingRadius: 0,
                          bottomLeadingRadius: 0,
@@ -89,7 +90,7 @@ struct MealDetailView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            Text(dessert?.strInstructions ?? "")
+            Text(dessert?.instructions ?? "")
                 .lineLimit(limitLines ? 3 : 100)
         }
         .padding(.horizontal)
@@ -122,27 +123,19 @@ struct MealDetailView: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            Text(dessert?.strIngredient1 ?? "")
-            Text(dessert?.strIngredient2 ?? "")
-            Text(dessert?.strIngredient3 ?? "")
-            Text(dessert?.strIngredient4 ?? "")
-            Text(dessert?.strIngredient5 ?? "")
-            Text(dessert?.strIngredient6 ?? "")
-            Text(dessert?.strIngredient7 ?? "")
-            Text(dessert?.strIngredient8 ?? "")
-            Text(dessert?.strIngredient9 ?? "")
-            Text(dessert?.strIngredient10 ?? "")
             
-            Text(dessert?.strIngredient11 ?? "")
-            Text(dessert?.strIngredient12 ?? "")
-            Text(dessert?.strIngredient13 ?? "")
-            Text(dessert?.strIngredient14 ?? "")
-            Text(dessert?.strIngredient15 ?? "")
-            Text(dessert?.strIngredient16 ?? "")
-            Text(dessert?.strIngredient17 ?? "")
-            Text(dessert?.strIngredient18 ?? "")
-            Text(dessert?.strIngredient19 ?? "")
-            Text(dessert?.strIngredient20 ?? "")
+            
+            Text(dessert?.ingredients.first??.capitalized ?? "")
+                .fontWeight(.medium)
+            
+            +
+            
+            Text(" - ")
+            
+            +
+            
+            Text((dessert?.measurements.first ?? "") ?? "")
+                .foregroundStyle(accentColor)
         }
         .padding(.horizontal)
         .padding(.top)

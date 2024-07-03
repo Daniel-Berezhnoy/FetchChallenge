@@ -7,44 +7,81 @@
 
 import Foundation
 
-//struct Dessert: Hashable, Codable {
-//    let mealName: String
-//    let cuisine: String
-//    
-//    let instructions: String
-//    let ingredients: [String]
-//    let measurements: [String]
-//}
-
 struct Dessert: Hashable, Codable {
-    let strMeal: String // mealName
-    let strArea: String // cuisine
+    let mealName: String
+    let cuisine: String
     
-    let strInstructions: String // instructions
+    let instructions: String
+    let ingredients: [String?]
+    let measurements: [String?]
+}
+
+extension Dessert {
+    enum CodingKeys: String, CodingKey {
+        case mealName = "strMeal"
+        case cuisine = "strArea"
+        case instructions = "strInstructions"
+    }
     
-//    let ingredients: [String]
-//    let measurements: [String]
+    struct DynamicCodingKeys: CodingKey {
+        var stringValue: String
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+        }
+        
+        var intValue: Int?
+        init?(intValue: Int) {
+            return nil
+        }
+    }
     
-    let strIngredient1: String
-    let strIngredient2: String
-    let strIngredient3: String
-    let strIngredient4: String
-    let strIngredient5: String
-    let strIngredient6: String
-    let strIngredient7: String
-    let strIngredient8: String
-    let strIngredient9: String
-    let strIngredient10: String
-    let strIngredient11: String
-    let strIngredient12: String
-    let strIngredient13: String
-    let strIngredient14: String
-    let strIngredient15: String
-    let strIngredient16: String
-    let strIngredient17: String
-    let strIngredient18: String
-    let strIngredient19: String
-    let strIngredient20: String
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(mealName, forKey: .mealName)
+        try container.encode(cuisine, forKey: .cuisine)
+        try container.encode(instructions, forKey: .instructions)
+        
+        var dynamicContainer = encoder.container(keyedBy: DynamicCodingKeys.self)
+        
+        for (index, ingredient) in ingredients.enumerated() {
+            if let ingredientKey = DynamicCodingKeys(stringValue: "strIngredient\(index + 1)") {
+                try dynamicContainer.encode(ingredient, forKey: ingredientKey)
+            }
+        }
+        
+        for (index, measurement) in measurements.enumerated() {
+            if let measurementKey = DynamicCodingKeys(stringValue: "strMeasure\(index + 1)") {
+                try dynamicContainer.encode(measurement, forKey: measurementKey)
+            }
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.mealName = try container.decode(String.self, forKey: .mealName)
+        self.cuisine = try container.decode(String.self, forKey: .cuisine)
+        self.instructions = try container.decode(String.self, forKey: .instructions)
+        
+        var ingredientsArray: [String?] = []
+        var measurementsArray: [String?] = []
+        
+        let dynamicContainer = try decoder.container(keyedBy: DynamicCodingKeys.self)
+        
+        for i in 1...20 {
+            if let ingredientKey = DynamicCodingKeys(stringValue: "strIngredient\(i)"),
+               let measurementKey = DynamicCodingKeys(stringValue: "strMeasure\(i)") {
+                let ingredient = try dynamicContainer.decodeIfPresent(String.self, forKey: ingredientKey)
+                let measurement = try dynamicContainer.decodeIfPresent(String.self, forKey: measurementKey)
+                ingredientsArray.append(ingredient)
+                measurementsArray.append(measurement)
+            }
+        }
+        
+        self.ingredients = ingredientsArray
+        self.measurements = measurementsArray
+    }
 }
 
 struct DessertResponse: Codable {

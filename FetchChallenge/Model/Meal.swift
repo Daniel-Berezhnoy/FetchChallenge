@@ -11,16 +11,18 @@ struct Meal: Hashable, Codable {
     let id: String
     let title: String
     let imageURL: String
-    
+}
+
+struct MenuResponse: Codable {
+    let meals: [Meal]
+}
+
+extension Meal {
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
         case title = "strMeal"
         case imageURL = "strMealThumb"
     }
-}
-
-struct MenuResponse: Codable {
-    let meals: [Meal]
 }
 
 extension Meal {
