@@ -117,30 +117,45 @@ struct MealDetailView: View {
         .padding(.horizontal)
     }
     
-    #warning("Loop through all the ingredients")
     private var ingredients: some View {
         VStack(alignment: .leading) {
-            
-            // Title
             Text("Ingredients:")
                 .font(.headline)
                 .fontWeight(.semibold)
             
-            // Ingredients
-            Text(dessert?.ingredients.first??.capitalized ?? "")
-                .fontWeight(.medium)
-            
-            +
-            
-            Text(" - ")
-            
-            +
-            
-            Text((dessert?.measurements.first ?? "") ?? "")
-                .foregroundStyle(accentColor)
+            ingredientList
         }
         .padding(.horizontal)
         .padding(.top)
+    }
+    
+    private var ingredientList: some View {
+        VStack(alignment: .leading) {
+            ForEach(dessert?.ingredients ?? ["Loading..."], id: \.self) { ingredient in
+                
+                
+                
+//                Text(dessert?.ingredients.first??.capitalized ?? "")
+//                    .fontWeight(.medium)
+                
+                Text(ingredient ?? "Loading...")
+                    .fontWeight(.medium)
+                
+                +
+                
+                Text(" - ")
+                
+                +
+                
+//                Text((dessert?.measurements.first ?? "") ?? "")
+//                    .foregroundStyle(accentColor)
+                
+                Text((dessert?.measurements.first ?? "") ?? "")
+                    .foregroundStyle(accentColor)
+                
+                
+            }
+        }
     }
     
     private var backgroundImage: some View {
