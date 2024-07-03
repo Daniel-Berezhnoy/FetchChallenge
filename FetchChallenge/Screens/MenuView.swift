@@ -58,7 +58,6 @@ struct MenuView: View {
         }
     }
     
-    
     // MARK: Computed Properties
     private var searchResults: [Meal] {
         if searchTerm.isEmpty {
