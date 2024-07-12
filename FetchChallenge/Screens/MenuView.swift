@@ -56,6 +56,7 @@ struct MenuView: View {
                 .background { Color(uiColor: .systemBackground) }
             }
         }
+        .ignoresSafeArea()
     }
     
     // MARK: Computed Properties
