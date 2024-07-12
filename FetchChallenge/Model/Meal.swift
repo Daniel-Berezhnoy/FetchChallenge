@@ -13,7 +13,7 @@ struct Meal: Hashable, Codable, Identifiable {
     let imageURL: String
 }
 
-struct MenuResponse: Codable {
+struct MealResponse: Codable {
     let meals: [Meal]
 }
 
