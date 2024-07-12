@@ -52,11 +52,10 @@ struct MenuView: View {
                         .opacity(0.75)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(.all)
                 .background { Color(uiColor: .systemBackground) }
             }
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.all)
     }
     
     // MARK: Computed Properties
