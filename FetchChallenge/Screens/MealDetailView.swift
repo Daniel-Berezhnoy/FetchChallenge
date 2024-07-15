@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MealDetailView: View {
     
-    @State private var limitLines = true
+    @State private var showFullDescription = false
     @State private var dessert: Dessert?
     
     let meal: Meal
@@ -93,7 +93,7 @@ struct MealDetailView: View {
                 .fontWeight(.semibold)
             
             Text(formattedInstructions)
-                .lineLimit(limitLines ? 3 : 300)
+                .lineLimit(showFullDescription ? 300 : 3)
         }
         .padding(.horizontal)
         .padding(.top)
@@ -102,12 +102,12 @@ struct MealDetailView: View {
     private var showMoreButton: some View {
         Button {
             HapticManager.playImpact(style: .medium)
-            withAnimation(.bouncy(duration: 0.3)) { limitLines.toggle() }
+            withAnimation(.bouncy(duration: 0.3)) { showFullDescription.toggle() }
         } label: {
             Label {
-                Text(limitLines ? "Show More" : "Show Less")
+                Text(showFullDescription ? "Show Less" : "Show More")
             } icon: {
-                Image(systemName: limitLines ? "chevron.down" : "chevron.up")
+                Image(systemName: showFullDescription ? "chevron.up" : "chevron.down")
             }
             .fontWeight(.medium)
         }
