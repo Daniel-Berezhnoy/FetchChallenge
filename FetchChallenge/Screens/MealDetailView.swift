@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MealDetailView: View {
     
-    @State private var showFullDescription = false
     @State private var dessert: Dessert?
+    @State private var showFullDescription = false
     
     let meal: Meal
     let accentColor: Color
