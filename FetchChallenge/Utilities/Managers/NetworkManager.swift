@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NetworkManager {
+final class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
     static let baseURL = "https://themealdb.com/api/json/v1/1/"
@@ -52,4 +52,9 @@ final class NetworkManager {
     }
     
     private init() {}
+}
+
+protocol NetworkManagerProtocol {
+    func getMenuItems() async throws -> [Meal]
+    func findDessert(withID dessertID: String) async throws -> Dessert
 }
